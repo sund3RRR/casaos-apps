@@ -1,0 +1,45 @@
+name: zealous_wong
+services:
+  main_app:
+    cpu_shares: 90
+    command: []
+    container_name: mealie
+    deploy:
+      resources:
+        limits:
+          memory: 7936M
+    hostname: mealie
+    image: hkotel/mealie:latest
+    labels:
+      icon: https://github.com/sund3RRR/casaos-apps/mealie/mealie.png
+    ports:
+      - target: 9000
+        published: "8086"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: bind
+        source: /DATA/AppData/mealie
+        target: /app/data
+    devices: []
+    cap_add: []
+    environment: []
+    network_mode: bridge
+    privileged: false
+x-casaos:
+  author: self
+  category: self
+  hostname: casaos.local
+  icon: https://github.com/sund3RRR/casaos-apps/mealie/mealie.png
+  index: /
+  is_uncontrolled: false
+  port_map: "8086"
+  scheme: http
+  store_app_id: zealous_wong
+  tips:
+    custom: |-
+      Recipes sites:
+      [https://food.ru/recipes](https://food.ru/recipes)
+      [https://www.povarenok.ru/recipes/](https://www.povarenok.ru/recipes/)
+  title:
+    custom: Mealie
